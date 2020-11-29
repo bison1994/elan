@@ -1,17 +1,51 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <d-form :schema="schema" :model="detail" :inline="true" />
+    {{ detail }}
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Vue from 'vue'
+import render from './core/render'
+import dForm from './lib/element-ui/d-form'
+import dInput from './lib/element-ui/d-input'
+
+Vue.component('v-render', render)
+Vue.component('d-form', dForm)
+Vue.component('d-input', dInput)
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data () {
+    return {
+      schema: {
+        a: {
+          is: 'd-input',
+          label: '名称',
+          placeholder: 'xxx',
+          col: 12,
+          description: 'xxx',
+          clearable: true,
+          // special
+          on: {},
+          style: {},
+          class: {},
+          'v-if': (d) => d,
+          'v-show': () => false,
+        }
+      },
+      detail: {
+        a: '',
+        b: ''
+      }
+    }
+  },
+  methods: {
+    handle () {
+      alert(1)
+    }
   }
 }
 </script>
@@ -24,5 +58,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.aaa {
+  color: blue;
 }
 </style>
