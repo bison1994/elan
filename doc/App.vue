@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
     <d-form :schema="schema" :model="detail" :inline="true" />
-    {{ detail }}
   </div>
 </template>
 
