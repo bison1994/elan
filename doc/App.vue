@@ -1,31 +1,24 @@
 <template>
   <div id="app">
-    <d-form :schema="schema" :model="detail" :inline="true" />
+    <Elan :schema="schema" :model="detail" inline />
+    {{ detail }}
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
-import render from './core/render'
-import dForm from './lib/element-ui/d-form'
-import dInput from './lib/element-ui/d-input'
-
-Vue.component('v-render', render)
-Vue.component('d-form', dForm)
-Vue.component('d-input', dInput)
-
 export default {
   name: 'App',
   data () {
     return {
       schema: {
         a: {
-          is: 'd-input',
+          use: 'e-input',
           label: '名称',
           placeholder: 'xxx',
           col: 12,
           description: 'xxx',
           clearable: true,
+          labelWidth: "50px",
           // special
           on: {},
           style: {},

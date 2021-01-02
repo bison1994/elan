@@ -1,22 +1,27 @@
 <script>
 export default {
-    name: 'v-render',
+    name: 'ElanRender',
     inheritAttrs: false,
     render (h) {
-        var { root, children, ...rest } = this.$attrs
-        if (!root || typeof root !== 'string') return null
-        if (Object.prototype.toString.call(children) === '[object Object]') children = [children]
-        if (typeof children === 'number' && !isNaN(children)) children = String(children)
+        var { use, children, ...rest } = this.$attrs
+        if (!use || typeof use !== 'string') return null
+        if (Object.prototype.toString.call(children) === '[object Object]') {
+            children = [children]
+        }
+        if (typeof children === 'number' && !isNaN(children)) {
+            children = String(children)
+        }
+
         return h(
-            root,
+            use,
             { ...rest },
             Array.isArray(children)
                 ? children.map(
-                    ({ is, children, ...rest }) => h(
-                        'v-render',
+                    ({ use, children, ...rest }) => h(
+                        'ElanRender',
                         {
                             attrs: {
-                                root: is,
+                                use,
                                 children,
                                 ...rest
                             }
