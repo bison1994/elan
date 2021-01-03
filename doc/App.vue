@@ -12,7 +12,7 @@ export default {
       schema: {
         a: {
           use: 'input',
-          if: (d) => d,
+          if: (d) => d.a !== '1',
           // props
           label: '名称',
           placeholder: 'xxx',

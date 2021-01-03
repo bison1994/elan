@@ -1,4 +1,11 @@
 <script>
+const ComponentNameMap = {
+    input: 'ElanWrappedInput',
+    select: 'ElanWrappedSelect',
+    checkbox: 'ElanWrappedCheckbox',
+    radio: 'ElanWrappedRadio',
+}
+
 export default {
     props: {
         schema: {
@@ -16,6 +23,7 @@ export default {
             const config = schema[prop]
             const {
                 use,
+                if: _if,
                 class: _class,
                 style,
                 attrs,
@@ -32,12 +40,17 @@ export default {
                 ...rest
             } = config
 
+            if (_if && !_if(model)) {
+                return null
+            }
+            
+            /** for two way data binding */
             on.input = val => {
                 model[prop] = val
             }
 
             return {
-                use,
+                use: ComponentNameMap[use],
                 attrs: {
                     prop,
                     value: model[prop],
@@ -57,7 +70,8 @@ export default {
                 ref,
                 refInFor,
             }
-        })
+        }).filter(v => v)
+
         return h("ElanRender", {
             attrs: {
                 use: this.$options.use,
