@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Elan :schema="schema" :model="detail" inline />
+    <ElanForm :schema="schema" :model="detail" inline />
     {{ detail }}
   </div>
 </template>
