@@ -1,7 +1,7 @@
-import EInput from './input.vue'
+import ElanWrappedInput from './input.vue'
 
 const components = {
-    EInput
+    ElanWrappedInput
 }
 
 export default function(Vue) {

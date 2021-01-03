@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <ElanForm :schema="schema" :model="detail" inline />
-    {{ detail }}
   </div>
 </template>
 
@@ -12,7 +11,9 @@ export default {
     return {
       schema: {
         a: {
-          use: 'e-input',
+          use: 'input',
+          if: (d) => d,
+          // props
           label: '名称',
           placeholder: 'xxx',
           col: 12,
@@ -21,10 +22,7 @@ export default {
           labelWidth: "50px",
           // special
           on: {},
-          style: {},
-          class: {},
-          'v-if': (d) => d,
-          'v-show': () => false,
+          style: {}
         }
       },
       detail: {
